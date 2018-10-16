@@ -23,8 +23,8 @@ void loop() {
     digitalWrite(PIN_CLOCK, LOW);
     digitalWrite(PIN_CLOCK, HIGH);
    
-    byte b = digitalRead(PIN_DATA) == HIGH ? 1 : 0;
-    pos += b * pow(2, 10-(i+1));
+    pos= pos | digitalRead(PIN_DATA);
+    if(i<9) pos = pos << 1;
   }
   for (int i=0; i<6; i++) {
     digitalWrite(PIN_CLOCK, LOW);
